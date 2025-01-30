@@ -216,7 +216,7 @@
 				<div class="flex justify-between gap-8">
 					<div class="w-full">
 						<button
-							class="flex w-full items-center justify-center gap-2 rounded border bg-gray-200 p-2 text-black"
+							class="flex w-full items-center justify-center gap-2 rounded border bg-gray-200 p-2 text-black transition hover:bg-gray-400"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +243,7 @@
 					</div>
 					<div class="w-full">
 						<button
-							class="flex w-full items-center justify-center gap-2 rounded border bg-gray-900 p-2 text-white"
+							class="flex w-full items-center justify-center gap-2 rounded border bg-gray-900 p-2 text-white transition hover:bg-gray-950"
 						>
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
