@@ -5,6 +5,7 @@
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import * as Form from '$lib/components/ui/form/index.js';
 	import { Input } from '$lib/components/ui/input/index.js';
+	import Button from '$lib/components/ui/button/button.svelte';
 
 	type FormSchema = Infer<typeof formSchema>;
 
@@ -12,18 +13,21 @@
 		data
 	}: {
 		data: {
-			success: any;
+			success: boolean;
 			form: SuperValidated<FormSchema>;
 		};
 	} = $props();
 
 	let success = $state(data?.success);
+	let error = $state<string | null>(null);
 
 	const form = superForm(data.form, {
 		validators: zodClient(formSchema),
 		onResult: ({ result }) => {
-			if ('success' in result) {
-				success = result.success;
+			if (result.status === 200) {
+				success = true;
+			} else {
+				error = 'Token is invalid or expired.';
 			}
 		}
 	});
@@ -36,9 +40,13 @@
 		<div class="flex flex-col items-center rounded bg-slate-900 p-8">
 			<h1 class="text-3xl">Password Reset</h1>
 			<p class="text-lg">Your password has been reset successfully.</p>
+			<Button href="/login">Back to Login</Button>
 		</div>
 	{:else}
 		<div class="flex flex-col items-center rounded bg-slate-900 p-8">
+			{#if error}
+				<p class="mb-3 rounded border border-red-900 p-4 text-red-900">{error}</p>
+			{/if}
 			<h1 class="text-3xl">Password Reset</h1>
 
 			<form method="POST" use:enhance class="space-y-2">
