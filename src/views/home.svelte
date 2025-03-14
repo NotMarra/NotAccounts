@@ -13,6 +13,7 @@
 	import Button from '$lib/components/ui/button/button.svelte';
 	import Input from '$lib/components/ui/input/input.svelte';
 	import Separator from '$lib/components/ui/separator/separator.svelte';
+	import { pb } from '$lib/pb';
 
 	export let user: User;
 	var uploading = false;
@@ -64,6 +65,10 @@
 		} catch (error) {
 			console.error('Failed to update profile', error);
 		}
+	}
+
+	async function linkGoogle() {
+		await pb.collection('users').authWithOAuth2({ provider: 'google' });
 	}
 
 	function cancelEditing() {
@@ -216,6 +221,7 @@
 				<div class="flex justify-between gap-8">
 					<div class="w-full">
 						<button
+							on:click={linkGoogle}
 							class="flex w-full items-center justify-center gap-2 rounded border bg-gray-200 p-2 text-black transition hover:bg-gray-400"
 						>
 							<svg
