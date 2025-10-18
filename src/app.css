@@ -1,21 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap");
 @import "tailwindcss";
-@import './nottheme.css';
+
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --radius: 0.625rem;
+  --radius: 0.65rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.141 0.005 285.823);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.141 0.005 285.823);
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.967 0.001 286.375);
+  --primary-foreground: oklch(0.97 0.014 254.604);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.967 0.001 286.375);
   --muted-foreground: oklch(0.552 0.016 285.938);
@@ -24,7 +22,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.92 0.004 286.32);
   --input: oklch(0.92 0.004 286.32);
-  --ring: oklch(0.705 0.015 286.067);
+  --ring: oklch(0.623 0.214 259.815);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -32,12 +30,12 @@
   --chart-5: oklch(0.769 0.188 70.08);
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.141 0.005 285.823);
-  --sidebar-primary: oklch(0.21 0.006 285.885);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.623 0.214 259.815);
+  --sidebar-primary-foreground: oklch(0.97 0.014 254.604);
   --sidebar-accent: oklch(0.967 0.001 286.375);
   --sidebar-accent-foreground: oklch(0.21 0.006 285.885);
   --sidebar-border: oklch(0.92 0.004 286.32);
-  --sidebar-ring: oklch(0.705 0.015 286.067);
+  --sidebar-ring: oklch(0.623 0.214 259.815);
 }
 
 .dark {
@@ -47,8 +45,8 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.21 0.006 285.885);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.92 0.004 286.32);
-  --primary-foreground: oklch(0.21 0.006 285.885);
+  --primary: oklch(58.46% 0.18 253.28deg);
+  --primary-foreground: oklch(0.379 0.146 265.522);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.274 0.006 286.033);
@@ -58,7 +56,7 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.552 0.016 285.938);
+  --ring: oklch(0.488 0.243 264.376);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
@@ -66,13 +64,14 @@
   --chart-5: oklch(0.645 0.246 16.439);
   --sidebar: oklch(0.21 0.006 285.885);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.546 0.245 262.881);
+  --sidebar-primary-foreground: oklch(0.379 0.146 265.522);
   --sidebar-accent: oklch(0.274 0.006 286.033);
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.552 0.016 285.938);
+  --sidebar-ring: oklch(0.488 0.243 264.376);
 }
+
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -110,6 +109,29 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-primary-50: oklch(95.97% 0.06 196.16deg);
+	--color-primary-100: oklch(89.11% 0.08 216.79deg);
+	--color-primary-200: oklch(82.49% 0.11 229.65deg);
+	--color-primary-300: oklch(75.92% 0.14 238.37deg);
+	--color-primary-400: oklch(70.06% 0.16 245.12deg);
+	--color-primary-500: oklch(64.73% 0.19 251.22deg);
+	--color-primary-600: oklch(58.46% 0.18 253.28deg);
+	--color-primary-700: oklch(52.26% 0.17 255.2deg);
+	--color-primary-800: oklch(45.71% 0.17 257.58deg);
+	--color-primary-900: oklch(39.23% 0.16 259.77deg);
+	--color-primary-950: oklch(32.41% 0.15 262.1deg);
+
+	--color-secondary-50: oklch(95.67% 0.06 196.16deg);
+	--color-secondary-100: oklch(89.58% 0.08 209.51deg);
+	--color-secondary-200: oklch(83.92% 0.1 217.03deg);
+	--color-secondary-300: oklch(78.38% 0.12 223.87deg);
+	--color-secondary-400: oklch(73.42% 0.14 229.63deg);
+	--color-secondary-500: oklch(68.67% 0.15 236.73deg);
+	--color-secondary-600: oklch(62.21% 0.14 239.4deg);
+	--color-secondary-700: oklch(55.54% 0.13 242.1deg);
+	--color-secondary-800: oklch(48.74% 0.12 245.71deg);
+	--color-secondary-900: oklch(41.65% 0.12 249.5deg);
+	--color-secondary-950: oklch(34.39% 0.11 254.23deg);
 }
 
 @theme { 
