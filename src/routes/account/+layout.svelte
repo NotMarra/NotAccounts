@@ -31,8 +31,9 @@
 </script>
 
 <ModeWatcher defaultMode="dark"/>
-{@render children?.()}
-
+<main class="p-5 pt-10">
+  {@render children?.()}
+</main>
 
 <!-- Change grid-cols-4 class after altering const links length -->
 <div class="fixed bottom-0 w-full border-t-1 grid grid-rows-1 grid-cols-4 gap-2 p-1">

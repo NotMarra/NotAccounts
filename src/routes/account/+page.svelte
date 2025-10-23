@@ -23,9 +23,6 @@
     } 
 
 </script>
-
-<main class="p-5 pt-10">
-
     <div class="flex items-center">
         <Avatar.Root class="w-15 h-15
         ">
@@ -85,4 +82,3 @@
             </Card.Footer>
         </Card.Root>
     </Tabs.Root>
-</main>
