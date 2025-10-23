@@ -10,8 +10,17 @@
     import { Label } from "$lib/components/ui/label/index.js";
 
     import FileDrop from "filedrop-svelte";
-	import type { Files, FileDropOptions } from "filedrop-svelte";
+	import type { Files } from "filedrop-svelte";
 	let files: Files;
+
+    const user = {
+        username: "UserName24",
+        account_type: "Premium Account",
+        pfp_src: "https://github.com/shadcn.png",
+        email: "mail@gmail.com",
+        register_at: "12.12.2000",
+        account_status: "Verified"
+    } 
 
 </script>
 
@@ -20,21 +29,22 @@
     <div class="flex items-center">
         <Avatar.Root class="w-15 h-15
         ">
-            <Avatar.Image src="https://github.com/shadcn.png" alt="@shadcn" />
-            <Avatar.Fallback>CN</Avatar.Fallback>
+            <Avatar.Image src={user.pfp_src} alt="{user.username}" />
+            <Avatar.Fallback>{user.username.slice(0,2).toUpperCase()}</Avatar.Fallback>
         </Avatar.Root>
 
         <div class="w-full ml-5">
-            <h2 class="font-semibold">UserName24</h2>
-            <p class="text-sm text-muted-foreground">Premium Account</p>
+            <h2 class="font-semibold">{user.username}</h2>
+            <p class="text-sm text-muted-foreground">{user.account_type}</p>
         </div>
     </div>
     <Separator class="mt-5 mb-5"/>
 
     
-    <Tabs.Root value="account">
+    <Tabs.Root>
         <Card.Root>
             <Card.Content class="flex flex-col gap-5">
+
                 <div>
                     <Label for="account-picture" class="mb-2">Profile Picture</Label>
                     <FileDrop id="account-picture" accept="image/* " on:filedrop={(e) => { 
@@ -49,28 +59,29 @@
                             </Card.Root>
                     </FileDrop>
                 </div>
+
                 <div>
                     <Label for="account-username" class="mb-2">Username</Label>
-                    <Input id="account-username" value="UserName42" />
+                    <Input id="account-username" value={user.username} />
                 </div>
 
                 <div>
                     <Label for="account-email" class="mb-2">E-mail</Label>
-                    <Input id="account-email" type="email" value="mail@gmail.com" />
+                    <Input id="account-email" type="email" value={user.email} />
                 </div>
 
                 <div>
                     <Label class="mb-1">Registration date</Label>
-                    <span class="text-sm">10.4.1998</span>
+                    <span class="text-sm">{user.register_at}</span>
                 </div>
 
                 <div>
                     <Label class="mb-1">Account Status</Label>
-                    <span class="text-sm">Verified</span>
+                    <span class="text-sm">{user.account_status}</span>
                 </div>
             </Card.Content>
              <Card.Footer>
-                <Button class="bg-transparent border-1 border-primary-400 text-white">Save changes</Button>
+                <Button class="bg-transparent border-1 border-primary-400 text-white cursor-pointer">Save changes</Button>
             </Card.Footer>
         </Card.Root>
     </Tabs.Root>
