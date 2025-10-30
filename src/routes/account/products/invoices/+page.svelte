@@ -76,22 +76,61 @@
 
                 <Dialog.Content >
                     <Dialog.Header>
-                    <Dialog.Title>Invoice ID: {row.id}</Dialog.Title>
+                    <Dialog.Title class="text-2xl font-bold">Invoice: {row.id}</Dialog.Title>
                     <Dialog.Description>
-                        <div class="grid grid-cols-2 rounded-xl mt-4 rounded-br-none bg-primary-700">
+                        <div class="flex flex-col gap-5">
+                            <div class="flex flex-col">
+                                <p>Title</p>
+                                <h3 class=" text-lg text-foreground font-bold">{row.item}</h3>
+                            </div>
+                            <div class="flex justify-between">
+                                <div class="flex flex-col">
+                                    <p>Issued</p>
+                                    <h3 class="text-foreground font-bold">{row.date}</h3>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p>Due Date</p>
+                                    <h3 class="text-foreground font-bold">date</h3>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p>Invoice No.</p>
+                                    <h3 class="text-foreground font-bold">number</h3>
+                                </div>
+                            </div>
+                            <div class="flex justify-between">
+                                <div class="flex flex-col">
+                                    <p>Status</p>
+                                    <h3 class="text-foreground font-bold">{row.status}</h3>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p>Payment Method</p>
+                                    <h3 class="text-foreground font-bold">{row.payment_method}</h3>
+                                </div>
+                                <div class="flex flex-col">
+                                    <p>Price</p>
+                                    <h3 class="text-foreground font-bold">{row.amount}</h3>
+                                </div>
+                            </div>
+                            <div class="flex justify-end">
+                                <div class="px-2  py-2">
+                                    <Button class="h-full items-center flex justify-center bg-foreground border-transparent focus:border-transparent focus:ring-0" href="" download><Download /> Download</Button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- <div class="grid grid-cols-2 rounded-xl mt-4 rounded-br-none ">
 
                             {#each Object.entries(row) as [key, value] (key)}
 
                             <div class="min-h-10 px-2 items-center flex w-full justify-center text-white border-t-1 border-primary-750">{titleCase(key.replace("_", " "))}</div>
                                 {#if key == "download_url"}
-                                    <div class="px-2 bg-muted py-2">
+                                    <div class="px-2  py-2">
                                         <Button class="h-full items-center flex justify-center bg-white border-transparent focus:border-transparent focus:ring-0" href={value} download><Download /> Download</Button>
                                     </div>
                                 {:else}
-                                    <div class="bg-muted px-2 items-center flex w-full justify-center text-stone-200">{value}</div>
+                                    <div class="px-2 items-center flex w-full justify-center text-stone-200">{value}</div>
                                 {/if}
                             {/each}
-                        </div>
+                        </div> -->
                     </Dialog.Description>
                     </Dialog.Header>
                 </Dialog.Content>
