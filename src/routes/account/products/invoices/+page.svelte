@@ -12,6 +12,7 @@
             status: "paid",
             item: "Premium Subscription",
             payment_method: "PayPal",
+            due_date: "12.10.2025",
             amount: "$20.00",
             download_url: "about:blank"
         },
@@ -21,6 +22,7 @@
             status: "Failed",
             item: "Plugin",
             payment_method: "Google Pay",
+            due_date: "12.10.2025",
             amount: "$15.00",
             download_url: "/robots.txt"
         } 
@@ -76,7 +78,7 @@
 
                 <Dialog.Content >
                     <Dialog.Header>
-                    <Dialog.Title class="text-2xl font-bold">Invoice: {row.id}</Dialog.Title>
+                    <Dialog.Title class="text-2xl font-bold">Invoice {row.id}</Dialog.Title>
                     <Dialog.Description>
                         <div class="flex flex-col gap-5">
                             <div class="flex flex-col">
@@ -90,11 +92,11 @@
                                 </div>
                                 <div class="flex flex-col">
                                     <p>Due Date</p>
-                                    <h3 class="text-foreground font-bold">date</h3>
+                                    <h3 class="text-foreground font-bold">{row.due_date}</h3>
                                 </div>
                                 <div class="flex flex-col">
                                     <p>Invoice No.</p>
-                                    <h3 class="text-foreground font-bold">number</h3>
+                                    <h3 class="text-foreground font-bold">{row.id}</h3>
                                 </div>
                             </div>
                             <div class="flex justify-between">
