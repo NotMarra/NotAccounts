@@ -16,7 +16,7 @@
 	const user = {
 		username: 'UserName24',
 		account_type: 'Premium Account',
-		pfp_src: 'https://github.com/shadcn.png',
+		image_src: 'https://github.com/shadcn.png',
 		email: 'mail@gmail.com',
 		register_at: '12.12.2000',
 		account_status: 'Verified'
@@ -25,10 +25,9 @@
 
 <div class="flex items-center">
 	<Avatar.Root
-		class="h-15 w-15
-        "
+		class="h-15 w-15"
 	>
-		<Avatar.Image src={user.pfp_src} alt={user.username} />
+		<Avatar.Image src={user.image_src} alt={user.username} />
 		<Avatar.Fallback>{user.username.slice(0, 2).toUpperCase()}</Avatar.Fallback>
 	</Avatar.Root>
 
