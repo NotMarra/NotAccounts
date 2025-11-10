@@ -101,7 +101,7 @@
 	<Separator class="mt-5 mb-2" />
 	<h2 class="mt-4 text-xl">Games</h2>
 	{#each products.plugins as product}
-		<Dialog.Root open>
+		<Dialog.Root>
 			<Dialog.Trigger class="w-full text-left">
 				<Card class="relative mt-5 cursor-pointer flex-row gap-0 p-5 pb-7">
 					<SquareArrowOutUpRight
