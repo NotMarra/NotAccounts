@@ -128,18 +128,18 @@
 .notworks.dark,
 .notworks .dark {
 	/* NotWorks Brand Colors - Dark Mode */
-	--background: oklch(0.196 0.007 264.542); /* #0f172a - Brand Dark */
+	--background: oklch(0.2003 0.0259 263.72); /* #0f172a - Brand Dark */
 	--foreground: oklch(0.985 0 0); /* #f7f7f7 - Brand Light */
-	--card: oklch(0.245 0.008 264.885);
+	--card: oklch(22.701% 0.03353 263.581);
 	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(0.245 0.008 264.885);
+	--popover: oklch(22.701% 0.03353 263.581);
 	--popover-foreground: oklch(0.985 0 0);
 
 	/* Primary - Dodger Blue (brighter in dark mode) */
 	--primary: oklch(70.06% 0.21 248.12deg);
 	--primary-foreground: oklch(0.196 0.007 264.542);
 
-	--secondary: oklch(0.31 0.008 264.033);
+	--secondary: oklch(0.2363 0.0262 268.09);
 	--secondary-foreground: oklch(0.985 0 0);
 	--muted: oklch(0.31 0.008 264.033);
 	--muted-foreground: oklch(0.705 0.015 264.067);
@@ -162,7 +162,7 @@
 	--chart-5: oklch(0.677 0.192 162.48); /* Success Green */
 
 	/* Sidebar */
-	--sidebar: oklch(0.245 0.008 264.885);
+	--sidebar: oklch(0.2363 0.0262 268.09);
 	--sidebar-foreground: oklch(0.985 0 0);
 	--sidebar-primary: oklch(70.06% 0.21 248.12deg);
 	--sidebar-primary-foreground: oklch(0.196 0.007 264.542);
