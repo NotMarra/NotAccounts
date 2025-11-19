@@ -3,7 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
-	import { LogOut } from 'lucide-svelte';
+	import { LogOut, Rocket } from 'lucide-svelte';
 
 	let { children } = $props();
 </script>
@@ -31,9 +31,17 @@
 		</Sidebar.Header>
 		<Sidebar.Content>
 			<Sidebar.Group />
+			<!--TODO-->
 			<Sidebar.Group />
 		</Sidebar.Content>
-		<Sidebar.Footer />
+		<Sidebar.Footer>
+			<!-- svelte-ignore a11y_invalid_attribute -->
+			<a
+				href="#"
+				class="flex h-auto w-full justify-center gap-2 rounded-md border-2 border-primary-600 bg-primary-800 p-2 px-5 text-center align-middle font-bold transition-colors hover:bg-primary-600"
+				><Rocket /> Become Pro!</a
+			>
+		</Sidebar.Footer>
 	</Sidebar.Root>
 	<main>
 		<Sidebar.Trigger />
