@@ -3,6 +3,7 @@
 	import { Button } from '$lib/components/ui/button/index.js';
 	import * as Table from '$lib/components/ui/table/index.js';
 	import { Badge } from '$lib/components/ui/badge/index.js';
+	import { Check } from 'lucide-svelte';
 </script>
 
 <div class="container m-auto px-10 py-5">
@@ -19,7 +20,10 @@
 		</Card.Header>
 	</Card.Root>
 
-	<h1 class="mt-7 text-xl font-bold">Recent Invoices</h1>
+	<div class="mt-7 flex justify-between">
+		<h1 class=" text-xl font-bold">Recent Invoices</h1>
+		<Button variant="link">More...</Button>
+	</div>
 	<div class="mt-3 overflow-hidden rounded-md border bg-secondary">
 		<Table.Root>
 			<Table.Header class="bg-background/40">
@@ -34,7 +38,8 @@
 				<Table.Row>
 					<Table.Cell class="font-medium">INV001</Table.Cell>
 					<Table.Cell
-						><Badge class="border-2 border-notworks-success-400 bg-notworks-success-600">Paid</Badge
+						><Badge class="border-2 bg-notworks-success-600/50"
+							><Check class="size-5 stroke-3 text-notworks-success-400" /> Paid</Badge
 						></Table.Cell
 					>
 					<Table.Cell>Credit Card</Table.Cell>
