@@ -36,6 +36,7 @@
 						<Sidebar.MenuItem>
 							<Sidebar.MenuButton>
 								{#snippet child({ props })}
+									<!-- svelte-ignore a11y_invalid_attribute -->
 									<a href="#" {...props}>
 										<House />
 										<span>Home</span>
@@ -51,7 +52,7 @@
 			<!-- svelte-ignore a11y_invalid_attribute -->
 			<a
 				href="#"
-				class="flex h-auto w-full justify-center gap-2 rounded-md border-2 border-primary-600 bg-primary-800 p-2 px-5 text-center align-middle font-bold transition-colors hover:bg-primary-600"
+				class="flex h-auto w-full justify-center gap-2 rounded-md border-2 border-primary-600 bg-primary-600/50 p-2 px-5 text-center align-middle font-bold transition-colors hover:bg-primary-600"
 				><Rocket /> Become Pro!</a
 			>
 		</Sidebar.Footer>
