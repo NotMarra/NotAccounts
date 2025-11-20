@@ -3,7 +3,7 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import * as Sidebar from '$lib/components/ui/sidebar/index.js';
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
-	import { LogOut, Rocket } from 'lucide-svelte';
+	import { LogOut, Rocket, House } from 'lucide-svelte';
 
 	let { children } = $props();
 </script>
@@ -30,9 +30,22 @@
 			</div>
 		</Sidebar.Header>
 		<Sidebar.Content>
-			<Sidebar.Group />
-			<!--TODO-->
-			<Sidebar.Group />
+			<Sidebar.Group>
+				<Sidebar.GroupContent>
+					<Sidebar.Menu>
+						<Sidebar.MenuItem>
+							<Sidebar.MenuButton>
+								{#snippet child({ props })}
+									<a href="#" {...props}>
+										<House />
+										<span>Home</span>
+									</a>
+								{/snippet}
+							</Sidebar.MenuButton>
+						</Sidebar.MenuItem>
+					</Sidebar.Menu>
+				</Sidebar.GroupContent>
+			</Sidebar.Group>
 		</Sidebar.Content>
 		<Sidebar.Footer>
 			<!-- svelte-ignore a11y_invalid_attribute -->
@@ -43,8 +56,8 @@
 			>
 		</Sidebar.Footer>
 	</Sidebar.Root>
-	<main>
-		<Sidebar.Trigger />
+	<main class="h-dvh w-full">
+		<Sidebar.Trigger class="m-3" />
 		{@render children?.()}
 	</main>
 </Sidebar.Provider>

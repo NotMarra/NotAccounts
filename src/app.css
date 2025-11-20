@@ -130,20 +130,20 @@
 	/* NotWorks Brand Colors - Dark Mode */
 	--background: oklch(0.2003 0.0259 263.72); /* #0f172a - Brand Dark */
 	--foreground: oklch(0.985 0 0); /* #f7f7f7 - Brand Light */
-	--card: oklch(22.701% 0.03353 263.581);
+	--card: oklch(0.2363 0.0262 268.09);
 	--card-foreground: oklch(0.985 0 0);
-	--popover: oklch(22.701% 0.03353 263.581);
+	--popover: oklch(0.2363 0.0262 268.09);
 	--popover-foreground: oklch(0.985 0 0);
 
 	/* Primary - Dodger Blue (brighter in dark mode) */
 	--primary: oklch(70.06% 0.21 248.12deg);
-	--primary-foreground: oklch(0.196 0.007 264.542);
+	--primary-foreground: oklch(0.985 0 0);
 
 	--secondary: oklch(0.2363 0.0262 268.09);
 	--secondary-foreground: oklch(0.985 0 0);
-	--muted: oklch(0.31 0.008 264.033);
+	--muted: oklch(70.06% 0.21 248.12deg);
 	--muted-foreground: oklch(0.705 0.015 264.067);
-	--accent: oklch(0.31 0.008 264.033);
+	--accent: oklch(70.06% 0.21 248.12deg);
 	--accent-foreground: oklch(0.985 0 0);
 
 	/* Destructive/Error (brighter in dark) */
@@ -166,7 +166,7 @@
 	--sidebar-foreground: oklch(0.985 0 0);
 	--sidebar-primary: oklch(70.06% 0.21 248.12deg);
 	--sidebar-primary-foreground: oklch(0.196 0.007 264.542);
-	--sidebar-accent: oklch(0.31 0.008 264.033);
+	--sidebar-accent: oklch(34.184% 0.08213 242.664);
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(70.06% 0.21 248.12deg);
