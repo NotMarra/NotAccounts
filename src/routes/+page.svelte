@@ -10,7 +10,7 @@
 	<h1 class="text-3xl font-extrabold">Welcome back [NAME]</h1>
 	<p class="opacity-50">Here is summary what is new!</p>
 
-	<Card.Root class="mt-7 w-full">
+	<!-- <Card.Root class="mt-7 w-full">
 		<Card.Header>
 			<Card.Title>Become Pro!</Card.Title>
 			<Card.Description>Support us monthly simply by subscribing to our Pro plan!</Card.Description>
@@ -18,9 +18,9 @@
 				<Button>Subscribe</Button>
 			</Card.Action>
 		</Card.Header>
-	</Card.Root>
+	</Card.Root> -->
 
-	<div class="mt-7 flex justify-between">
+	<!-- <div class="mt-7 flex justify-between">
 		<h1 class=" text-xl font-bold">Recent Invoices</h1>
 		<Button variant="link">More...</Button>
 	</div>
@@ -38,8 +38,8 @@
 				<Table.Row>
 					<Table.Cell class="font-medium">INV001</Table.Cell>
 					<Table.Cell
-						><Badge class="border-2 bg-notworks-success-600/50"
-							><Check class="size-5 stroke-3 text-notworks-success-400" /> Paid</Badge
+						><Badge class="bg-notworks-success-600/50 border-2"
+							><Check class="text-notworks-success-400 size-5 stroke-3" /> Paid</Badge
 						></Table.Cell
 					>
 					<Table.Cell>Credit Card</Table.Cell>
@@ -47,5 +47,5 @@
 				</Table.Row>
 			</Table.Body>
 		</Table.Root>
-	</div>
+	</div> -->
 </div>

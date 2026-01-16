@@ -6,9 +6,4 @@ export const pages = [
 		link: '/',
 		icon: HouseIcon
 	},
-    {
-        label: 'User Settings',
-        link: '/settings',
-        icon: UserCogIcon
-    }
 ];
