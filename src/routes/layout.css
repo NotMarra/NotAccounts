@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+	--font-sans: 'Inter', sans-serif;
+	--font-heading: 'Montserrat', sans-serif;
+
+	--color-background: oklch(var(--background));
+	--color-foreground: oklch(var(--foreground));
+	--color-card: oklch(var(--card));
+	--color-card-foreground: oklch(var(--card-foreground));
+	--color-popover: oklch(var(--popover));
+	--color-popover-foreground: oklch(var(--popover-foreground));
+	--color-primary: oklch(var(--primary));
+	--color-primary-foreground: oklch(var(--primary-foreground));
+	--color-secondary: oklch(var(--secondary));
+	--color-secondary-foreground: oklch(var(--secondary-foreground));
+	--color-muted: oklch(var(--muted));
+	--color-muted-foreground: oklch(var(--muted-foreground));
+	--color-accent: oklch(var(--accent));
+	--color-accent-foreground: oklch(var(--accent-foreground));
+	--color-destructive: oklch(var(--destructive));
+	--color-destructive-foreground: oklch(var(--destructive-foreground));
+	--color-border: oklch(var(--border));
+	--color-input: oklch(var(--input));
+	--color-ring: oklch(var(--ring));
+
+	--radius: 0.5rem;
+}
+
+@layer base {
+	:root {
+		--background: 0.985 0 0;
+		--foreground: 0.13 0.02 263;
+		--card: 1 0 0;
+		--card-foreground: 0.2 0.02 263;
+		--popover: 1 0 0;
+		--popover-foreground: 0.2 0.02 263;
+		--primary: 0.4 0.2 250;
+		--primary-foreground: 0.98 0 0;
+		--secondary: 0.96 0.01 260;
+		--secondary-foreground: 0.2 0.02 263;
+		--muted: 0.96 0.01 260;
+		--muted-foreground: 0.55 0.02 260;
+		--accent: 0.96 0.01 260;
+		--accent-foreground: 0.2 0.02 263;
+		--destructive: 0.6 0.18 25;
+		--destructive-foreground: 0.98 0 0;
+		--border: 0.9 0.01 260;
+		--input: 0.9 0.01 260;
+		--ring: 0.4 0.2 250;
+
+		input[type='text'],
+		input[type='email'],
+		input[type='password'],
+		input[type='number'],
+		input[type='search'],
+		input[type='tel'],
+		input[type='url'],
+		textarea,
+		select {
+			border-width: 1px;
+			border-color: var(--color-input);
+			border-radius: var(--radius);
+			background-color: transparent;
+			padding: 0.5rem 0.75rem;
+			font-size: 0.875rem;
+			transition:
+				border-color 0.2s,
+				box-shadow 0.2s;
+		}
+
+		input[type='text']:focus,
+		input[type='email']:focus,
+		input[type='password']:focus,
+		input[type='number']:focus,
+		input[type='search']:focus,
+		input[type='tel']:focus,
+		input[type='url']:focus,
+		textarea:focus,
+		select:focus {
+			border-color: var(--color-ring);
+			outline: none;
+			box-shadow: 0 0 0 1px var(--color-ring);
+		}
+	}
+
+	.dark {
+		--background: 0.13 0.02 263;
+		--foreground: 0.98 0 0;
+		--card: 0.17 0.02 268;
+		--card-foreground: 0.98 0 0;
+		--popover: 0.23 0.02 268;
+		--popover-foreground: 0.98 0 0;
+		--primary: 0.7 0.21 248;
+		--primary-foreground: 0.98 0 0;
+		--secondary: 0.23 0.02 268;
+		--secondary-foreground: 0.98 0 0;
+		--muted: 0.23 0.02 268;
+		--muted-foreground: 0.7 0.01 264;
+		--accent: 0.23 0.02 268;
+		--accent-foreground: 0.98 0 0;
+		--destructive: 0.7 0.25 29;
+		--destructive-foreground: 0.98 0 0;
+		--border: 0.23 0.02 268;
+		--input: 0.23 0.02 268;
+		--ring: 0.7 0.21 248;
+
+		input[type='text'],
+		input[type='email'],
+		input[type='password'],
+		input[type='number'],
+		input[type='search'],
+		input[type='tel'],
+		input[type='url'],
+		textarea,
+		select {
+			border-width: 1px;
+			border-color: var(--color-input);
+			border-radius: var(--radius);
+			background-color: transparent;
+			padding: 0.5rem 0.75rem;
+			font-size: 0.875rem;
+			transition:
+				border-color 0.2s,
+				box-shadow 0.2s;
+		}
+
+		input[type='text']:focus,
+		input[type='email']:focus,
+		input[type='password']:focus,
+		input[type='number']:focus,
+		input[type='search']:focus,
+		input[type='tel']:focus,
+		input[type='url']:focus,
+		textarea:focus,
+		select:focus {
+			border-color: var(--color-ring);
+			outline: none;
+			box-shadow: 0 0 0 1px var(--color-ring);
+		}
+	}
+
+	* {
+		border-color: var(--color-border);
+	}
+
+	body {
+		@apply bg-background text-foreground font-sans;
+	}
+
+	input,
+	textarea,
+	select {
+		border-color: var(--color-input);
+	}
+
+	input:focus,
+	textarea:focus,
+	select:focus {
+		border-color: var(--color-ring);
+		outline: none;
+		box-shadow: 0 0 0 1px var(--color-ring);
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply font-heading font-bold;
+	}
+
+	h1 {
+		font-size: var(--text-4xl);
+	}
+	h2 {
+		font-size: var(--text-3xl);
+	}
+	h3 {
+		font-size: var(--text-2xl);
+	}
+	h4 {
+		font-size: var(--text-xl);
+	}
+	h5 {
+		font-size: var(--text-lg);
+	}
+	h6 {
+		font-size: var(--text-md);
+	}
+	p {
+		color: oklch(from var(--color-foreground) l c h / 0.8);
+	}
+	a {
+		color: var(--color-primary);
+		text-decoration-line: underline;
+		transition: color 0.2s;
+	}
+
+	a:hover {
+		color: oklch(from var(--color-primary) calc(l - 0.1) c h);
+	}
+}
+
+@keyframes orbit {
+	0% {
+		transform: rotate(0deg) translateY(calc(var(--radius) * 1px)) rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg) translateY(calc(var(--radius) * 1px)) rotate(-360deg);
+	}
+}
+
+@layer utilities {
+	.animate-orbit {
+		animation: orbit calc(var(--duration) * 1s) linear infinite;
+		animation-delay: calc(var(--delay) * 1s);
+	}
+}

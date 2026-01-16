@@ -1,0 +1,93 @@
+// src/routes/settings/+page.server.ts
+import { fail, redirect } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
+
+export const load: PageServerLoad = async ({ locals }) => {
+	if (!locals.user) throw redirect(302, '/login');
+	return { user: locals.user };
+};
+
+export const actions: Actions = {
+	updateProfile: async ({ request, locals }) => {
+		const formData = await request.formData();
+		
+		// Pokud uživatel nenahrál nový soubor, smažeme prázdný avatar z formData, 
+		// aby nám PB nepřepsal stávající obrázek prázdnotou.
+		const avatar = formData.get('avatar') as File;
+		if (avatar && avatar.size === 0) {
+			formData.delete('avatar');
+		}
+
+		try {
+			if (!locals.user) return fail(401);
+			
+			// PocketBase update přímo z formData
+			await locals.pb.collection('users').update(locals.user.id, formData);
+		} catch (err: any) {
+			return fail(400, { error: 'Nepodařilo se aktualizovat profil.' });
+		}
+
+		return { success: true };
+	},
+
+changePassword: async ({ request, locals }) => {
+		const data = await request.formData();
+		const oldPassword = data.get('oldPassword') as string;
+		const password = data.get('password') as string;
+		const passwordConfirm = data.get('passwordConfirm') as string;
+
+		try {
+			// PocketBase vyžaduje staré heslo pro ověření při změně na nové
+			await locals.pb.collection('users').update(locals.user!.id, {
+				oldPassword,
+				password,
+				passwordConfirm
+			});
+		} catch (err: any) {
+			return fail(400, { pwError: 'Nepodařilo se změnit heslo. Je staré heslo správně?' });
+		}
+		return { pwSuccess: true };
+	},
+
+	requestEmailChange: async ({ request, locals }) => {
+		const data = await request.formData();
+		const newEmail = data.get('newEmail') as string;
+
+		try {
+			// Pošle potvrzovací e-mail na novou adresu. E-mail se změní až po kliknutí na odkaz.
+			await locals.pb.collection('users').requestEmailChange(newEmail);
+		} catch (err: any) {
+			return fail(400, { emailError: 'Nepodařilo se odeslat žádost o změnu e-mailu.' });
+		}
+		return { emailSuccess: true };
+	},
+
+	deleteAccount: async ({ locals }) => {
+		try {
+			await locals.pb.collection('users').delete(locals.user!.id);
+			locals.pb.authStore.clear();
+		} catch (err: any) {
+			return fail(400, { deleteError: 'Účet se nepodařilo odstranit.' });
+		}
+		throw redirect(303, '/register');
+	},
+
+    resendVerification: async ({ locals }) => {
+		if (!locals.user || !locals.user.email) {
+			return fail(401);
+		}
+
+		try {
+			await locals.pb.collection('users').requestVerification(locals.user.email);
+		} catch (err: any) {
+			return fail(400, { verificationError: 'Nepodařilo se odeslat ověřovací e-mail.' });
+		}
+
+		return { verificationSuccess: true };
+	},
+
+	logout: async ({ locals }) => {
+		locals.pb.authStore.clear();
+		throw redirect(303, '/login');
+	}
+};
