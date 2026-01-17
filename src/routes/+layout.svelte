@@ -1,12 +1,14 @@
 <script lang="ts">
-	import '../app.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import './layout.css';
+	import favicon from '$lib/assets/img/logo_bg.png';
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
 	<link rel="icon" href={favicon} />
-</svelte:head>
+	<meta name="darkreader-lock" />
 
-{@render children?.()} 
+	<title>NotAccount</title>
+</svelte:head>
+{@render children()}

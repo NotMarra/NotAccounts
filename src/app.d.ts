@@ -7,6 +7,17 @@ declare global {
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
+
+		interface Locals {
+			pb: PocketBase;
+			user: (RecordModel & {
+				username: string;
+				name: string;
+				avatar: string;
+				perms: string[];
+				verified: boolean;
+			}) | null;
+		}
 	}
 }
 
