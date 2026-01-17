@@ -5,7 +5,6 @@ import { dev } from '$app/environment';
 export const handle: Handle = async ({ event, resolve }) => {
     event.locals.pb = new PocketBase('https://pb.notmarra.com');
 
-    // OPRAVA: Načítáme celý syrový 'cookie' hlavičku, ne jen jednu konkrétní cookie
     const cookieHeader = event.request.headers.get('cookie') || '';
     event.locals.pb.authStore.loadFromCookie(cookieHeader);
 
@@ -22,7 +21,6 @@ export const handle: Handle = async ({ event, resolve }) => {
 
     const response = await resolve(event);
 
-    // Nastavení cookie zpět (to máš v podstatě správně, jen zkontroluj domain)
     const cookieOptions = {
         httpOnly: true,
         secure: !dev,

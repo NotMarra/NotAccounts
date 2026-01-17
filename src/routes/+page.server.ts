@@ -1,4 +1,3 @@
-// src/routes/settings/+page.server.ts
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
@@ -11,8 +10,6 @@ export const actions: Actions = {
 	updateProfile: async ({ request, locals }) => {
 		const formData = await request.formData();
 		
-		// Pokud uživatel nenahrál nový soubor, smažeme prázdný avatar z formData, 
-		// aby nám PB nepřepsal stávající obrázek prázdnotou.
 		const avatar = formData.get('avatar') as File;
 		if (avatar && avatar.size === 0) {
 			formData.delete('avatar');
@@ -21,30 +18,28 @@ export const actions: Actions = {
 		try {
 			if (!locals.user) return fail(401);
 			
-			// PocketBase update přímo z formData
 			await locals.pb.collection('users').update(locals.user.id, formData);
 		} catch (err: any) {
-			return fail(400, { error: 'Nepodařilo se aktualizovat profil.' });
+			return fail(400, { error: 'Failed to update profile.' });
 		}
 
 		return { success: true };
 	},
 
-changePassword: async ({ request, locals }) => {
+	changePassword: async ({ request, locals }) => {
 		const data = await request.formData();
 		const oldPassword = data.get('oldPassword') as string;
 		const password = data.get('password') as string;
 		const passwordConfirm = data.get('passwordConfirm') as string;
 
 		try {
-			// PocketBase vyžaduje staré heslo pro ověření při změně na nové
 			await locals.pb.collection('users').update(locals.user!.id, {
 				oldPassword,
 				password,
 				passwordConfirm
 			});
 		} catch (err: any) {
-			return fail(400, { pwError: 'Nepodařilo se změnit heslo. Je staré heslo správně?' });
+			return fail(400, { pwError: 'Failed to change password. Is the old password correct?' });
 		}
 		return { pwSuccess: true };
 	},
@@ -54,10 +49,9 @@ changePassword: async ({ request, locals }) => {
 		const newEmail = data.get('newEmail') as string;
 
 		try {
-			// Pošle potvrzovací e-mail na novou adresu. E-mail se změní až po kliknutí na odkaz.
 			await locals.pb.collection('users').requestEmailChange(newEmail);
 		} catch (err: any) {
-			return fail(400, { emailError: 'Nepodařilo se odeslat žádost o změnu e-mailu.' });
+			return fail(400, { emailError: 'Failed to send email change request.' });
 		}
 		return { emailSuccess: true };
 	},
@@ -67,12 +61,12 @@ changePassword: async ({ request, locals }) => {
 			await locals.pb.collection('users').delete(locals.user!.id);
 			locals.pb.authStore.clear();
 		} catch (err: any) {
-			return fail(400, { deleteError: 'Účet se nepodařilo odstranit.' });
+			return fail(400, { deleteError: 'Failed to delete account.' });
 		}
 		throw redirect(303, '/register');
 	},
 
-    resendVerification: async ({ locals }) => {
+	resendVerification: async ({ locals }) => {
 		if (!locals.user || !locals.user.email) {
 			return fail(401);
 		}
@@ -80,7 +74,7 @@ changePassword: async ({ request, locals }) => {
 		try {
 			await locals.pb.collection('users').requestVerification(locals.user.email);
 		} catch (err: any) {
-			return fail(400, { verificationError: 'Nepodařilo se odeslat ověřovací e-mail.' });
+			return fail(400, { verificationError: 'Failed to send verification email.' });
 		}
 
 		return { verificationSuccess: true };

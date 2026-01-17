@@ -14,7 +14,7 @@ export const actions: Actions = {
 				passwordConfirm
 			);
 		} catch (err) {
-			return fail(400, { error: 'Nepodařilo se resetovat heslo. Odkaz může být neplatný.' });
+			return fail(400, { error: 'Failed to reset password. The link may be invalid.' });
 		}
 
 		throw redirect(303, '/login?resetSuccess=true');

@@ -7,10 +7,9 @@ export const actions: Actions = {
 		const password = data.get('password') as string;
 
 		try {
-			// PB vyžaduje token a aktuální heslo
 			await locals.pb.collection('users').confirmEmailChange(params.token, password);
 		} catch (err) {
-			return fail(400, { error: 'Chyba při změně e-mailu. Špatné heslo nebo neplatný token.' });
+			return fail(400, { error: 'Error changing email. Invalid password or token.' });
 		}
 
 		throw redirect(303, '/settings?emailChanged=true');
