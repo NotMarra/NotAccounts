@@ -38,11 +38,17 @@ export const actions: Actions = {
 		if (redirectTo) {
 			try {
 				const dest = new URL(redirectTo);
-				if (dest.hostname.endsWith('notmarra.com') || dest.hostname.endsWith('notmarra.local')) {
+				
+				const isAllowedDomain = 
+					dest.hostname.endsWith('notmarra.com') || 
+					dest.hostname.endsWith('notmarra.local') || 
+					dest.hostname === 'localhost'; 
+
+				if (isAllowedDomain) {
 					throw redirect(303, redirectTo);
 				}
 			} catch (e) {
-				if (e instanceof Error && 'status' in e) throw e;
+				if (e && typeof e === 'object' && 'status' in e) throw e; 
 			}
 		}
 

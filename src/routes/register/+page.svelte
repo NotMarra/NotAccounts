@@ -103,5 +103,12 @@
 				Register
 			</button>
 		</form>
+		<div class="mt-6 flex flex-col gap-2 text-center text-sm">
+			<p>
+				Have an account? <a href="/register?redirectTo={redirectTo || ''}" class="font-medium"
+					>Log in!</a
+				>
+			</p>
+		</div>
 	</div>
 </div>
