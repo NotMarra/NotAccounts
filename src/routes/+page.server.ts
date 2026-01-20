@@ -1,5 +1,6 @@
 import { fail, redirect } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
+import { dev } from '$app/environment';
 
 export const load: PageServerLoad = async ({ locals }) => {
 	if (!locals.user) throw redirect(302, '/login');
@@ -56,10 +57,18 @@ export const actions: Actions = {
 		return { emailSuccess: true };
 	},
 
-	deleteAccount: async ({ locals }) => {
+	deleteAccount: async ({ locals, cookies }) => {
 		try {
 			await locals.pb.collection('users').delete(locals.user!.id);
 			locals.pb.authStore.clear();
+
+			cookies.delete('pb_auth', {
+				path: '/',
+				domain: dev ? undefined : '.notmarra.com',
+				secure: !dev,
+				httpOnly: true,
+				sameSite: 'lax'
+			});
 		} catch (err: any) {
 			return fail(400, { deleteError: 'Failed to delete account.' });
 		}
@@ -80,8 +89,17 @@ export const actions: Actions = {
 		return { verificationSuccess: true };
 	},
 
-	logout: async ({ locals }) => {
+	logout: async ({ locals, cookies }) => {
 		locals.pb.authStore.clear();
+
+		cookies.delete('pb_auth', {
+			path: '/',
+			domain: dev ? undefined : '.notmarra.com',
+			secure: !dev,
+			httpOnly: true,
+			sameSite: 'lax'
+		});
+
 		throw redirect(303, '/login');
 	}
 };
